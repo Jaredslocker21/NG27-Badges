@@ -1,0 +1,30 @@
+[
+  {
+    "source": "https://my.nordicgame.com/_next/static/media/RocGrotesk_Regular-s.1in24cprgeogn.otf",
+    "file": "assets/rocgrotesk-regular.woff"
+  },
+  {
+    "source": "https://my.nordicgame.com/_next/static/media/RocGrotesk_Bold-s.2nhapmj3-b_66.otf",
+    "file": "assets/rocgrotesk-bold.woff"
+  },
+  {
+    "source": "https://my.nordicgame.com/_next/static/media/RocGrotesk_ExtraBold-s.3uw6bnl8h98j-.otf",
+    "file": "assets/rocgrotesk-extrabold.woff"
+  },
+  {
+    "source": "https://my.nordicgame.com/_next/static/media/RocGrotesk_Condensed-s.0eeckin4sl4c3.otf",
+    "file": "assets/rocgrotesk-condensed.woff"
+  },
+  {
+    "source": "https://my.nordicgame.com/_next/static/media/RocGrotesk_CondensedMedium-s.0e84-n2fuxplt.otf",
+    "file": "assets/rocgrotesk-condensedmedium.woff"
+  },
+  {
+    "source": "https://my.nordicgame.com/_next/static/media/RocGrotesk_CondensedBold-s.0gugyhlwny6g3.otf",
+    "file": "assets/rocgrotesk-condensedbold.woff"
+  },
+  {
+    "source": "https://my.nordicgame.com/_next/static/media/RocGrotesk_CondensedExtraBold-s.2hts267n1o3oa.otf",
+    "file": "assets/rocgrotesk-condensedextrabold.woff"
+  }
+]

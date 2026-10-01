@@ -1,0 +1,945 @@
+/* Fonts: Roc Grotesk */
+
+@font-face {
+  font-family: RocGrotesk;
+  src: url('assets/rocgrotesk-regular.woff') format('woff');
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: RocGrotesk;
+  src: url('assets/rocgrotesk-bold.woff') format('woff');
+  font-weight: 700;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: RocGroteskCondensed;
+  src: url('assets/rocgrotesk-condensed.woff') format('woff');
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: RocGroteskCondensed;
+  src: url('assets/rocgrotesk-condensedbold.woff') format('woff');
+  font-weight: 700;
+  font-display: swap;
+}
+
+/* All component rules are scoped. Badge artwork intentionally keeps its print colours. */
+.ng-profile-badge {
+  --ng-blue: #0052f5;
+  --ng-yellow: #ffed00;
+  --ng-ink: #181818;
+  --ng-subtle: #62666e;
+  --ng-surface: #fff;
+  --ng-border: #e3e5e9;
+  color: var(--ng-ink);
+  font: 15px/1.5 RocGrotesk, sans-serif;
+  max-width: 1040px;
+  margin: 0 auto;
+  padding: 28px;
+  box-sizing: border-box;
+}
+
+.ng-profile-badge * {
+  box-sizing: border-box;
+}
+
+.ng-page-heading {
+  margin-bottom: 28px;
+}
+
+.ng-eyebrow {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.8px;
+  color: var(--ng-blue);
+}
+
+.ng-page-heading h1 {
+  font-size: 32px;
+  line-height: 1.15;
+  letter-spacing: -1px;
+  margin: 12px 0;
+}
+
+.ng-page-heading p {
+  color: var(--ng-subtle);
+  margin: 0;
+}
+
+.ng-editor-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 36px;
+  align-items: start;
+}
+
+.ng-profile-panel {
+  border: 1px solid var(--ng-border);
+  background: var(--ng-surface);
+  border-radius: 14px;
+  padding: 26px;
+}
+
+.ng-profile-badge h2 {
+  font-size: 18px;
+  line-height: 1.3;
+  margin: 0;
+}
+
+.ng-muted {
+  color: var(--ng-subtle);
+  margin: 7px 0 26px;
+  font-size: 13px;
+}
+
+/* Profile fields */
+
+.ng-profile-form {
+  display: grid;
+  gap: 20px;
+}
+
+.ng-profile-form label {
+  display: grid;
+  gap: 7px;
+  font-size: 13px;
+  font-weight: 700;
+  min-width: 0;
+}
+
+.ng-field-pair {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.ng-profile-form input {
+  width: 100%;
+  min-width: 0;
+  background: #fff;
+  color: #181818;
+  border: 1px solid #c9cdd5;
+  border-radius: 7px;
+  padding: 12px;
+  font: 16px/1.4 RocGrotesk, sans-serif;
+  transition: border-color .15s;
+}
+
+.ng-profile-form input:focus-visible {
+  outline: 2px solid var(--ng-blue);
+  outline-offset: 2px;
+}
+
+/* Assigned pass details */
+
+.ng-assigned-details {
+  border-top: 1px solid var(--ng-border);
+  margin-top: 28px;
+  padding-top: 20px;
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.ng-assigned-details span {
+  display: grid;
+  font-size: 12px;
+  color: var(--ng-subtle);
+  gap: 3px;
+}
+
+.ng-assigned-details strong {
+  font-size: 13px;
+  color: var(--ng-ink);
+}
+
+.ng-demo-note,
+.ng-preview-caption {
+  font-size: 12px;
+  color: var(--ng-subtle);
+  margin: 20px 0 0;
+}
+
+.ng-validation {
+  font-size: 13px;
+  color: #a72619;
+}
+
+/* Preview panel */
+
+.ng-preview-heading {
+  display: flex;
+  justify-content: space-between;
+  gap: 14px;
+  align-items: center;
+  margin-bottom: 18px;
+}
+
+.ng-preview-heading > span {
+  font-size: 11px;
+  color: var(--ng-subtle);
+  background: #eceef2;
+  border-radius: 5px;
+  padding: 4px 7px;
+}
+
+.ng-badge-stage {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  padding: 42px 24px;
+  background: #eef0f4;
+  border-radius: 14px;
+  display: grid;
+  place-items: center;
+}
+
+/* Badge dimensions and background */
+
+.ng-badge {
+  z-index: 1;
+  --ng-header-top: 9.9%;
+  --ng-header-size: 18.13cqw;
+  position: relative;
+  width: 100%;
+  max-width: 360px;
+  aspect-ratio: 90/126;
+  background: #000;
+  color: #1d1d1b;
+  container-type: inline-size;
+  font-family: RocGroteskCondensed, sans-serif;
+  box-shadow: 0 12px 24px #0002;
+  line-height: 1.05;
+}
+
+.ng-lanyard-hole {
+  position: absolute;
+  top: 3.4%;
+  left: 47.7%;
+  width: 4.6%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: #eef0f4;
+}
+
+.ng-badge-paper {
+  position: absolute;
+  left: 3.85%;
+  right: 3.85%;
+  top: 23%;
+  height: 50.2%;
+  background: #fff;
+}
+
+/* Event artwork and Code of Conduct */
+
+.ng-event-banner {
+  position: absolute;
+  left: 3.92%;
+  top: var(--ng-header-top);
+  width: 73%;
+  height: var(--ng-header-size);
+}
+
+.ng-conduct {
+  position: absolute;
+  left: 76.9%;
+  top: var(--ng-header-top);
+  width: var(--ng-header-size);
+  color: var(--ng-blue);
+  font-weight: 700;
+  font-size: 2cqw;
+  line-height: 1.05;
+}
+
+.ng-conduct > img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1;
+  image-rendering: pixelated;
+  background: #fff;
+}
+
+.ng-conduct-caption {
+  display: flex;
+  gap: 1cqw;
+  margin-top: 1cqw;
+}
+
+.ng-conduct-check {
+  display: block;
+  flex: 0 0 4cqw;
+  height: 4cqw;
+  border: .4cqw solid var(--ng-blue);
+  background: #fff;
+}
+
+.ng-conduct-check.is-accepted:after {
+  content: '✓';
+  display: block;
+  font-family: Arial, sans-serif;
+  font-size: 3.4cqw;
+  line-height: 1;
+}
+
+/* Attendee name, company and title */
+
+.ng-badge-identity {
+  position: absolute;
+  left: 7%;
+  right: 7%;
+  top: 32%;
+  height: 30.3%;
+  text-align: center;
+  display: grid;
+  grid-template-rows: 48% 27% 25%;
+  align-items: center;
+  gap: 0;
+}
+
+.ng-badge-name {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: center;
+  gap: .4cqw;
+  font-size: 9.7cqw;
+  font-weight: 700;
+  line-height: .98;
+}
+
+.ng-badge-name > span {
+  display: block;
+  white-space: nowrap;
+  line-height: 1.03;
+}
+
+.ng-badge-company {
+  font-size: 8.5cqw;
+  line-height: 1.07;
+}
+
+.ng-badge-title {
+  font-size: 6cqw;
+  line-height: 1.07;
+}
+
+.ng-badge-company,
+.ng-badge-title {
+  overflow-wrap: anywhere;
+  min-width: 0;
+}
+
+/* Pass type and badge ID */
+
+.ng-badge-pass-row {
+  position: absolute;
+  left: 5.8%;
+  right: 5.8%;
+  top: 66.2%;
+  height: 6.5%;
+  display: grid;
+  grid-template-columns: 1fr 13.5% 1.04fr;
+  gap: 3%;
+  align-items: center;
+}
+
+.ng-badge-pass {
+  font-family: RocGrotesk, sans-serif;
+  color: var(--ng-blue);
+  font-size: 4.75cqw;
+  font-weight: 700;
+  line-height: 1.08;
+  overflow-wrap: anywhere;
+}
+
+.ng-fish-mark {
+  width: 100%;
+  display: block;
+}
+
+.ng-badge-id {
+  font: 4.65cqw/1.1 RocGrotesk, sans-serif;
+  color: #db1f12;
+  white-space: nowrap;
+  text-align: right;
+}
+
+/* Contact QR and consent copy */
+
+.ng-contact-section {
+  position: absolute;
+  left: 3.95%;
+  top: 74.8%;
+  width: 67%;
+  height: 20%;
+  display: flex;
+  gap: 2.3cqw;
+  color: var(--ng-yellow);
+  align-items: end;
+}
+
+.ng-contact-qr-area {
+  width: 31.8%;
+  flex-shrink: 0;
+  align-self: start;
+}
+
+.ng-contact-qr-area > strong {
+  display: block;
+  font-size: 3.3cqw;
+  letter-spacing: .2cqw;
+  text-align: center;
+  margin-bottom: 1cqw;
+}
+
+.ng-contact-qr {
+  width: 100%;
+  aspect-ratio: 1;
+  display: block;
+  background: #fff;
+  object-fit: contain;
+  image-rendering: pixelated;
+  padding: 3%;
+}
+
+.ng-qr-placeholder {
+  aspect-ratio: 1;
+  border: .5cqw solid #fff;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font: 700 2.7cqw/1.2 RocGroteskCondensed, sans-serif;
+  padding: 1cqw;
+  gap: 1cqw;
+}
+
+.ng-qr-placeholder small {
+  font-weight: 400;
+  font-size: 2.5cqw;
+}
+
+.ng-contact-copy {
+  font-size: 3.5cqw;
+  line-height: 1.16;
+  padding-bottom: .4cqw;
+}
+
+.ng-contact-copy small {
+  display: block;
+  font-size: 2.05cqw;
+  font-weight: 700;
+  white-space: nowrap;
+  margin-top: 1cqw;
+}
+
+/* Sponsor and event footer */
+
+.ng-sponsor {
+  position: absolute;
+  left: 74.5%;
+  top: 75.9%;
+  width: 21.65%;
+  height: 17.25%;
+  object-fit: contain;
+}
+
+.ng-badge-footer {
+  position: absolute;
+  left: 3.95%;
+  right: 3.95%;
+  top: 95.2%;
+  display: flex;
+  justify-content: space-between;
+  gap: .5cqw;
+  color: #fff;
+  font-size: 2.8cqw;
+  line-height: 1.1;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.ng-badge-footer b {
+  color: var(--ng-yellow);
+}
+
+/* Visibility and accessibility */
+
+.ng-profile-badge [hidden] {
+  display: none !important;
+}
+
+.ng-sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Responsive layout */
+
+@media (max-width: 740px) {
+  .ng-editor-layout {
+    grid-template-columns: 1fr;
+    gap: 26px;
+  }
+
+  /* Profile layout and colours */
+
+  .ng-profile-badge {
+    padding: 18px;
+  }
+
+  .ng-page-heading h1 {
+    font-size: 27px;
+  }
+
+  .ng-profile-panel {
+    padding: 22px;
+  }
+
+  .ng-badge-stage {
+    padding: 24px;
+  }
+
+  .ng-preview-panel {
+    min-width: 0;
+  }
+}
+
+@media (max-width: 380px) {
+  .ng-field-pair {
+    grid-template-columns: 1fr;
+  }
+
+  .ng-badge-stage {
+    padding: 12px;
+  }
+
+  .ng-profile-panel {
+    padding: 18px;
+  }
+
+  .ng-profile-badge {
+    padding: 12px;
+  }
+}
+
+/* CSS-only Nordic fish: separate travel, heading, body and tail motion. */
+
+.ng-motion-control {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: -5px 0 12px;
+  font-size: 12px;
+  color: var(--ng-subtle);
+  cursor: pointer;
+}
+
+.ng-motion-control input {
+  accent-color: #009fe3;
+  width: 15px;
+  height: 15px;
+}
+
+.ng-fish-water {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+  perspective: 700px;
+  background: radial-gradient(ellipse at 50% 40%, #fff8, transparent 75%);
+}
+
+.ng-swimmer {
+  --fish-colour: #0052f5;
+  --fish-size: 94px;
+  --fish-depth: .72;
+  --fish-time: 24s;
+  --fish-delay: -4s;
+  position: absolute;
+  left: -30%;
+  top: 8%;
+  width: var(--fish-size);
+  height: calc(var(--fish-size) * .70);
+  color: var(--fish-colour);
+  opacity: var(--fish-depth);
+  animation: ng-fish-cross var(--fish-time) linear var(--fish-delay) infinite;
+  will-change: left, transform;
+}
+
+.ng-swimmer-heading,
+.ng-swimmer-body {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.ng-swimmer-heading {
+  transform: scaleX(1);
+}
+
+.ng-swimmer-body {
+  position: relative;
+  animation: ng-fish-glide 3.7s ease-in-out var(--fish-delay) infinite;
+  transform-origin: 60% 50%;
+}
+
+/* Circular body, open mouth and triangular tail match the supplied NG fish. */
+.ng-swimmer-body::before {
+  content: '';
+  position: absolute;
+  inset: 0 0 0 26%;
+  background: currentColor;
+  border-radius: 50%;
+  clip-path: polygon(0 0, 100% 0, 100% 15%, 62% 50%, 100% 85%, 100% 100%, 0 100%);
+}
+
+.ng-swimmer-tail {
+  position: absolute;
+  left: 1%;
+  top: 26%;
+  width: 25%;
+  height: 48%;
+  background: currentColor;
+  clip-path: polygon(0 0, 100% 50%, 0 100%);
+  transform-origin: 100% 50%;
+  animation: ng-fish-tail .72s ease-in-out var(--fish-delay) infinite;
+}
+
+.ng-swimmer--two {
+  --fish-colour: #ffed00;
+  --fish-size: 68px;
+  --fish-time: 29s;
+  --fish-delay: -13s;
+  --fish-depth: .85;
+  top: 17%;
+  animation-name: ng-fish-return;
+}
+
+.ng-swimmer--two .ng-swimmer-heading,
+.ng-swimmer--four .ng-swimmer-heading,
+.ng-swimmer--six .ng-swimmer-heading {
+  transform: scaleX(-1);
+}
+
+.ng-swimmer--three {
+  --fish-colour: #0052f5;
+  --fish-size: 82px;
+  --fish-time: 21s;
+  --fish-delay: -9s;
+  --fish-depth: .48;
+  top: 49%;
+}
+
+.ng-swimmer--four {
+  --fish-size: 128px;
+  --fish-time: 33s;
+  --fish-delay: -27s;
+  --fish-depth: .24;
+  top: 66%;
+  animation-name: ng-fish-return;
+}
+
+.ng-swimmer--five {
+  --fish-colour: #ffed00;
+  --fish-size: 72px;
+  --fish-time: 26s;
+  --fish-delay: -18s;
+  --fish-depth: .8;
+  top: 90%;
+}
+
+.ng-swimmer--six {
+  --fish-colour: #0052f5;
+  --fish-size: 54px;
+  --fish-time: 19s;
+  --fish-delay: -3s;
+  --fish-depth: .65;
+  top: 82%;
+  animation-name: ng-fish-return;
+}
+
+@keyframes ng-fish-cross {
+  0% { left: -30%; transform: translateY(0) rotate(-4deg); }
+  25% { transform: translateY(-16px) rotate(-2deg); }
+  50% { transform: translateY(6px) rotate(3deg); }
+  75% { transform: translateY(18px) rotate(1deg); }
+  100% { left: 130%; transform: translateY(0) rotate(-4deg); }
+}
+
+@keyframes ng-fish-return {
+  0% { left: 130%; transform: translateY(0) rotate(3deg); }
+  25% { transform: translateY(18px) rotate(1deg); }
+  50% { transform: translateY(-5px) rotate(-3deg); }
+  75% { transform: translateY(-14px) rotate(-1deg); }
+  100% { left: -30%; transform: translateY(0) rotate(3deg); }
+}
+
+@keyframes ng-fish-glide {
+  0%, 100% { transform: rotate(-1.5deg) rotateY(-6deg); }
+  50% { transform: rotate(1.5deg) rotateY(6deg); }
+}
+
+@keyframes ng-fish-tail {
+  0%, 100% { transform: rotateY(-32deg) skewY(-7deg); }
+  50% { transform: rotateY(32deg) skewY(7deg); }
+}
+
+.ng-preview-panel:has(#ng-pause-fish:checked) .ng-swimmer,
+.ng-preview-panel:has(#ng-pause-fish:checked) .ng-swimmer-body,
+.ng-preview-panel:has(#ng-pause-fish:checked) .ng-swimmer-tail {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ng-swimmer,
+  .ng-swimmer-body,
+  .ng-swimmer-tail {
+    animation: none;
+  }
+
+  .ng-swimmer--one { left: 3%; }
+  .ng-swimmer--two { left: 80%; }
+  .ng-swimmer--three { left: 5%; }
+  .ng-swimmer--four { left: 80%; }
+  .ng-swimmer--five { left: 15%; }
+  .ng-swimmer--six { left: 75%; }
+}
+
+/* Whole-page fish: the existing badge and editor layout stay untouched. */
+
+body.ng-fish-page {
+  isolation: isolate;
+}
+
+.ng-fish-water--page {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  opacity: .45;
+  background: none;
+}
+
+.ng-fish-page:has(#ng-pause-fish:checked) .ng-swimmer,
+.ng-fish-page:has(#ng-pause-fish:checked) .ng-swimmer-body,
+.ng-fish-page:has(#ng-pause-fish:checked) .ng-swimmer-tail {
+  animation-play-state: paused;
+}
+
+/* Print layout: 90 × 126 mm */
+
+@media print {
+  @page {
+    size: 90mm 126mm;
+    margin: 0;
+  }
+
+  body {
+    margin: 0;
+  }
+
+  .ng-profile-badge {
+    padding: 0;
+    max-width: none;
+  }
+
+  .ng-page-heading,
+  .ng-profile-panel,
+  .ng-preview-heading,
+  .ng-preview-caption,
+  .ng-motion-control,
+  .ng-fish-water {
+    display: none;
+  }
+
+  .ng-editor-layout {
+    display: block;
+  }
+
+  .ng-badge-stage {
+    padding: 0;
+    background: none;
+    border-radius: 0;
+  }
+
+  .ng-badge {
+    width: 90mm;
+    max-width: none;
+    height: 126mm;
+    box-shadow: none;
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
+
+  .ng-lanyard-hole {
+    background: #fff;
+  }
+}
+
+/* NG27: replace this placeholder when the confirmed conduct QR is supplied. */
+.ng-conduct-pending {
+  width: 100%;
+  aspect-ratio: 1;
+  display: grid;
+  place-content: center;
+  text-align: center;
+  background: #fff;
+  color: var(--ng-blue);
+  font-size: 2.5cqw;
+  line-height: 1.2;
+}
+
+/* Independent full-page swimming background */
+body { isolation: isolate; }
+body > main,
+body > #root { position: relative; z-index: 1; }
+.ng-fish-water--page { display: none !important; }
+
+#ng27-ocean {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+#ng27-ocean .ng27-fish {
+  --size: 96px;
+  --cycle: 38s;
+  --delay: -5s;
+  position: absolute;
+  top: 8%;
+  width: var(--size);
+  height: calc(var(--size) * 0.7);
+  color: #0052f5;
+  opacity: 0.5;
+  animation: ng27-swim var(--cycle) linear var(--delay) infinite;
+}
+
+#ng27-ocean .ng27-fish:nth-child(2) {
+  --size: 72px;
+  --cycle: 46s;
+  --delay: -31s;
+  top: 24%;
+  color: #ffed00;
+  opacity: 0.7;
+}
+
+#ng27-ocean .ng27-fish:nth-child(3) {
+  --size: 82px;
+  --cycle: 34s;
+  --delay: -13s;
+  top: 43%;
+}
+
+#ng27-ocean .ng27-fish:nth-child(4) {
+  --size: 128px;
+  --cycle: 54s;
+  --delay: -39s;
+  top: 60%;
+  color: #db1f12;
+  opacity: 0.45;
+}
+
+#ng27-ocean .ng27-fish:nth-child(5) {
+  --size: 68px;
+  --cycle: 42s;
+  --delay: -18s;
+  top: 76%;
+  color: #ffed00;
+  opacity: 0.7;
+}
+
+#ng27-ocean .ng27-fish:nth-child(6) {
+  --size: 54px;
+  --cycle: 30s;
+  --delay: -21s;
+  top: 88%;
+  color: #db1f12;
+}
+
+#ng27-ocean .ng27-heading {
+  display: block;
+  width: 100%;
+  height: 100%;
+  animation: ng27-face var(--cycle) step-end var(--delay) infinite;
+}
+
+#ng27-ocean .ng27-body {
+  display: block;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  animation: ng27-bob 3.6s ease-in-out var(--delay) infinite;
+}
+
+#ng27-ocean .ng27-body::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 0 26%;
+  background: currentColor;
+  border-radius: 50%;
+  clip-path: polygon(0 0, 100% 0, 100% 15%, 62% 50%, 100% 85%, 100% 100%, 0 100%);
+}
+
+#ng27-ocean .ng27-body::after {
+  content: "";
+  position: absolute;
+  left: 1%;
+  top: 26%;
+  width: 25%;
+  height: 48%;
+  background: currentColor;
+  clip-path: polygon(0 0, 100% 50%, 0 100%);
+  transform-origin: 100% 50%;
+  animation: ng27-tail 0.7s ease-in-out var(--delay) infinite;
+}
+
+@keyframes ng27-swim {
+  0%, 100% { left: calc(0px - var(--size) - 20px); }
+  50% { left: calc(100% + 20px); }
+}
+
+@keyframes ng27-face {
+  0%, 100% { transform: scaleX(1); }
+  50% { transform: scaleX(-1); }
+}
+
+@keyframes ng27-bob {
+  0%, 100% { transform: translateY(-8px) rotate(-2deg); }
+  50% { transform: translateY(8px) rotate(2deg); }
+}
+
+@keyframes ng27-tail {
+  0%, 100% { transform: scaleX(0.7) skewY(-8deg); }
+  50% { transform: scaleX(1) skewY(8deg); }
+}
+
+body:has(#ng-pause-fish:checked) #ng27-ocean *,
+body:has(#ng-pause-fish:checked) #ng27-ocean .ng27-body::after {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #ng27-ocean { display: none; }
+}
+
+@media print {
+  #ng27-ocean { display: none; }
+}

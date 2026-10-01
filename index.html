@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>NG27 · Profile and badge preview</title>
+  <link rel="stylesheet" href="badge.css">
+</head>
+<body class="ng-fish-page">
+<main id="ng-badge-demo" class="ng-profile-badge">
+  <header class="ng-page-heading">
+    <div class="ng-eyebrow">NG27 / MY PROFILE</div>
+    <h1>Your profile. Your badge.</h1>
+    <p>25–28 May 2027 · Slagthuset, Malmö. Your badge updates as you edit.</p>
+  </header>
+  <div class="ng-editor-layout">
+    <section class="ng-profile-panel" aria-labelledby="ng-profile-heading">
+      <h2 id="ng-profile-heading">Badge details</h2>
+      <p class="ng-muted">These details appear on your event badge.</p>
+      <form class="ng-profile-form" autocomplete="on">
+        <div class="ng-field-pair">
+          <label>First name<input name="firstName" autocomplete="given-name" maxlength="64" value="First name"></label>
+          <label>Last name<input name="lastName" autocomplete="family-name" maxlength="64" value="Last name"></label>
+        </div>
+        <label>Company name<input name="company" autocomplete="organization" maxlength="100" value="Company name"></label>
+        <label>Title<input name="title" autocomplete="organization-title" maxlength="100" value="Title"></label>
+      </form>
+      <div class="ng-assigned-details">
+        <span>Pass type<strong data-meta="passType">EVENT PASS</strong></span>
+        <span>Badge ID<strong data-meta="badgeId">2087 · sample</strong></span>
+      </div>
+      <p class="ng-demo-note">Interactive preview. Changes here are not saved to your account.</p>
+      <p class="ng-validation" role="alert" hidden></p>
+      <span class="ng-sr-only" role="status" aria-live="polite" data-update-status></span>
+    </section>
+    <section class="ng-preview-panel" aria-labelledby="ng-preview-heading">
+      <div class="ng-preview-heading"><h2 id="ng-preview-heading">Badge preview</h2><span>NG27 preview</span></div>
+      <label class="ng-motion-control"><input type="checkbox" id="ng-pause-fish"> Pause fish</label>
+      <div class="ng-badge-stage">
+        <div class="ng-fish-water" aria-hidden="true">
+          <div class="ng-swimmer ng-swimmer--one"><span class="ng-swimmer-heading"><span class="ng-swimmer-body"><i class="ng-swimmer-tail"></i></span></span></div>
+          <div class="ng-swimmer ng-swimmer--two"><span class="ng-swimmer-heading"><span class="ng-swimmer-body"><i class="ng-swimmer-tail"></i></span></span></div>
+          <div class="ng-swimmer ng-swimmer--three"><span class="ng-swimmer-heading"><span class="ng-swimmer-body"><i class="ng-swimmer-tail"></i></span></span></div>
+          <div class="ng-swimmer ng-swimmer--four"><span class="ng-swimmer-heading"><span class="ng-swimmer-body"><i class="ng-swimmer-tail"></i></span></span></div>
+          <div class="ng-swimmer ng-swimmer--five"><span class="ng-swimmer-heading"><span class="ng-swimmer-body"><i class="ng-swimmer-tail"></i></span></span></div>
+          <div class="ng-swimmer ng-swimmer--six"><span class="ng-swimmer-heading"><span class="ng-swimmer-body"><i class="ng-swimmer-tail"></i></span></span></div>
+        </div>
+        <article class="ng-badge" aria-label="Nordic Game attendee badge">
+          <div class="ng-lanyard-hole" aria-hidden="true"></div>
+          <div class="ng-badge-paper" aria-hidden="true"></div>
+          <img class="ng-event-banner" src="assets/ng27-banner.svg" alt="Nordic Game, 25–28 May 2027, Malmö">
+          <div class="ng-conduct">
+            <img src="assets/conduct-qr.png" alt="Code of Conduct QR code"><div class="ng-conduct-pending" hidden>CODE OF<br>CONDUCT<br>QR PENDING</div>
+            <div class="ng-conduct-caption"><span class="ng-conduct-check" aria-hidden="true"></span><span>I have read the<br>Code of Conduct</span></div>
+          </div>
+          <div class="ng-badge-identity">
+            <div class="ng-badge-name"><span data-badge="firstName">First name</span><span data-badge="lastName">Last name</span></div>
+            <div class="ng-badge-company" data-badge="company">Company name</div>
+            <div class="ng-badge-title" data-badge="title">Title</div>
+          </div>
+          <div class="ng-badge-pass-row">
+            <strong class="ng-badge-pass" data-badge="passType">EVENT PASS</strong>
+            <img class="ng-fish-mark" src="assets/fish-mark.svg" alt="">
+            <span class="ng-badge-id">BadgeID: <span data-badge="badgeId">2087</span></span>
+          </div>
+          <div class="ng-contact-section">
+            <div class="ng-contact-qr-area"><strong>SCAN HERE</strong><img class="ng-contact-qr" alt="Your personal badge QR code" hidden><div class="ng-qr-placeholder">PERSONAL QR<br><small>Available with your badge</small></div></div>
+            <div class="ng-contact-copy">GIN profile or vCard,<br>first name, last name,<br>e-mail and BadgeID.<small>GDPR requires consent to scan this QR code.</small></div>
+          </div>
+          <img class="ng-sponsor" src="assets/sponsor-pending.svg" alt="NG27 sponsor pending confirmation">
+          <footer class="ng-badge-footer"><span><b>TAGS:</b> <span data-badge="tags">@nordicgame #NG27Malmo</span></span> <span><b>WIFI:</b> <span data-badge="wifi">PENDING</span></span> <span><b>PWD:</b> <span data-badge="wifiPassword">PENDING</span></span></footer>
+        </article>
+      </div>
+      <p class="ng-preview-caption">90 × 126 mm · Personal QR shown when supplied by your account.</p>
+    </section>
+  </div>
+</main>
+<script>
+/* Plain JavaScript: pair with badge.css. No dependencies, requests or account writes. */
+(function (global) {
+  'use strict';
+  const profileKeys = ['firstName', 'lastName', 'company', 'title'];
+  const fallback = { firstName: 'First name', lastName: 'Last name', company: 'Company name', title: 'Title' };
+  const asText = value => value == null ? '' : String(value);
+  function mount(root, options = {}) {
+    if (!root) throw new Error('A badge preview root is required.');
+    const form = root.querySelector('.ng-profile-form');
+    const badgeElement = root.querySelector('.ng-badge');
+    const errorElement = root.querySelector('.ng-validation');
+    const statusElement = root.querySelector('[data-update-status]');
+    const profile = {};
+    let badge = { passType: 'EVENT PASS', badgeId: '', isSample: false, ...options.badge };
+    let announceTimer;
+    const find = key => root.querySelector('[data-badge="' + key + '"]');
+    function fit(element, maxSize, minSize, maxHeight) {
+      let size = badgeElement.clientWidth * maxSize / 100;
+      const minimum = badgeElement.clientWidth * minSize / 100;
+      element.style.fontSize = size + 'px';
+      while (size > minimum && (element.scrollWidth > element.clientWidth + 1 || element.scrollHeight > maxHeight + 1)) {
+        size = Math.max(minimum, size - 0.5);
+        element.style.fontSize = size + 'px';
+      }
+      return element.scrollWidth <= element.clientWidth + 1 && element.scrollHeight <= maxHeight + 1;
+    }
+    function fitAll() {
+      if (!badgeElement.clientWidth) return;
+      const problems = [];
+      profileKeys.forEach(key => {
+        const el = find(key);
+        const name = key === 'firstName' || key === 'lastName';
+        const nameGap = name ? parseFloat(getComputedStyle(el.parentElement).rowGap) || 0 : 0;
+        const maxHeight = name ? (el.parentElement.clientHeight - nameGap) / 2 : el.parentElement.clientHeight * (key === 'company' ? .27 : .25);
+        if (!fit(el, name ? 9.7 : key === 'company' ? 8.5 : 6, name ? 4 : 3, maxHeight)) problems.push(key);
+      });
+      const pass = find('passType');
+      if (!fit(pass, 4.75, 2.4, pass.parentElement.clientHeight)) problems.push('pass type');
+      const id = root.querySelector('.ng-badge-id');
+      if (!fit(id, 4.65, 2, id.parentElement.clientHeight)) problems.push('badge ID');
+      const footer = root.querySelector('.ng-badge-footer');
+      if (!fit(footer, 2.8, 2, badgeElement.clientHeight * .035)) problems.push('event footer');
+      if (errorElement) {
+        errorElement.hidden = problems.length === 0;
+        errorElement.textContent = problems.length ? 'Some badge details are too long to fit. Please shorten: ' + problems.map(k => ({firstName:'first name',lastName:'last name',company:'company name',title:'title'}[k] || k)).join(', ') + '.' : '';
+      }
+    }
+    function updateProfile(next = {}) {
+      profileKeys.forEach(key => {
+        if (Object.prototype.hasOwnProperty.call(next, key)) profile[key] = asText(next[key]);
+        if (form) form.elements.namedItem(key).value = profile[key] || '';
+        find(key).textContent = profile[key] || fallback[key];
+      });
+      fitAll();
+    }
+    function safeImageUrl(value) {
+      try {
+        const url = new URL(value, document.baseURI);
+        return ['https:', 'http:', 'file:', 'blob:'].includes(url.protocol) || /^data:image\/(png|jpeg|webp|gif);base64,/i.test(value) ? url.href : '';
+      } catch (_) { return ''; }
+    }
+    function updateBadge(next = {}) {
+      badge = { ...badge, ...next };
+      ['passType','badgeId','tags','wifi','wifiPassword'].forEach(key => {
+        if (Object.prototype.hasOwnProperty.call(badge, key)) find(key).textContent = asText(badge[key]);
+      });
+      const passMeta = root.querySelector('[data-meta="passType"]');
+      const idMeta = root.querySelector('[data-meta="badgeId"]');
+      if (passMeta) passMeta.textContent = asText(badge.passType);
+      if (idMeta) idMeta.textContent = asText(badge.badgeId) + (badge.isSample ? ' · sample' : '');
+      root.querySelector('.ng-conduct-check').classList.toggle('is-accepted', badge.conductAccepted === true);
+      const qr = root.querySelector('.ng-contact-qr');
+      const placeholder = root.querySelector('.ng-qr-placeholder');
+      const qrUrl = safeImageUrl(asText(badge.qrImageUrl));
+      qr.hidden = !qrUrl; placeholder.hidden = !!qrUrl;
+      if (qrUrl) qr.src = qrUrl; else qr.removeAttribute('src');
+      qr.onerror = () => { qr.hidden = true; placeholder.hidden = false; };
+      if (badge.bannerImageUrl) { const url = safeImageUrl(badge.bannerImageUrl); if (url) root.querySelector('.ng-event-banner').src = url; }
+      if (badge.bannerAlt) root.querySelector('.ng-event-banner').alt = asText(badge.bannerAlt);
+      const conductImage = root.querySelector('.ng-conduct > img');
+      const conductPending = root.querySelector('.ng-conduct-pending');
+      const conductUrl = safeImageUrl(asText(badge.conductQrImageUrl));
+      conductImage.hidden = !conductUrl;
+      if (conductPending) conductPending.hidden = !!conductUrl;
+      if (conductUrl) conductImage.src = conductUrl; else conductImage.removeAttribute('src');
+      conductImage.onerror = () => { conductImage.hidden = true; if (conductPending) conductPending.hidden = false; };
+      fitAll();
+    }
+    function onInput(event) {
+      if (!profileKeys.includes(event.target.name)) return;
+      updateProfile({ [event.target.name]: event.target.value });
+      clearTimeout(announceTimer);
+      announceTimer = setTimeout(() => { if (statusElement) statusElement.textContent = 'Badge preview updated for ' + profile.firstName + ' ' + profile.lastName; }, 400);
+      root.dispatchEvent(new CustomEvent('ng:profile-preview', { bubbles: true, detail: { ...profile } }));
+    }
+    function preventSubmit(event) { event.preventDefault(); }
+    profileKeys.forEach(key => { profile[key] = asText(options.profile && options.profile[key] !== undefined ? options.profile[key] : form ? form.elements.namedItem(key).value : ''); });
+    if (form) { form.addEventListener('input', onInput); form.addEventListener('submit', preventSubmit); }
+    const observer = new ResizeObserver(fitAll);
+    observer.observe(badgeElement);
+    updateProfile(profile); updateBadge(badge);
+    if (document.fonts) document.fonts.ready.then(fitAll);
+    return {
+      updateProfile, updateBadge,
+      getProfile: () => ({ ...profile }),
+      destroy: () => { observer.disconnect(); clearTimeout(announceTimer); if (form) { form.removeEventListener('input', onInput); form.removeEventListener('submit', preventSubmit); } }
+    };
+  }
+  global.NordicGameBadge = { mount };
+})(window);
+
+</script>
+<script>
+  window.ngBadgePreview = NordicGameBadge.mount(document.getElementById('ng-badge-demo'), {
+    badge: { passType: 'EVENT PASS', badgeId: '2087', isSample: true, conductQrImageUrl: 'assets/conduct-qr.png' }
+  });
+</script>
+
+<div id="ng27-ocean" aria-hidden="true">
+  <div class="ng27-fish"><span class="ng27-heading"><span class="ng27-body"></span></span></div>
+  <div class="ng27-fish"><span class="ng27-heading"><span class="ng27-body"></span></span></div>
+  <div class="ng27-fish"><span class="ng27-heading"><span class="ng27-body"></span></span></div>
+  <div class="ng27-fish"><span class="ng27-heading"><span class="ng27-body"></span></span></div>
+  <div class="ng27-fish"><span class="ng27-heading"><span class="ng27-body"></span></span></div>
+  <div class="ng27-fish"><span class="ng27-heading"><span class="ng27-body"></span></span></div>
+</div>
+</body>
+</html>
